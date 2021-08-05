@@ -50,6 +50,12 @@ RUN buildRequirements="zlib1g-dev libzip-dev" \
 
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --filename=composer --install-dir=/usr/bin --version=1.10.20
 
+RUN mkdir /tmp/ec &&\
+    wget -O /tmp/ec/ec-linux-amd64.tar.gz https://github.com/editorconfig-checker/editorconfig-checker/releases/download/2.3.5/ec-linux-amd64.tar.gz &&\
+    tar -xvzf /tmp/ec/ec-linux-amd64.tar.gz &&\
+    mv bin/ec-linux-amd64 /usr/bin/ec &&\
+    rm -rf /tmp/ec
+
 RUN echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bashrc
 RUN composer global require "squizlabs/php_codesniffer=*"
 RUN composer global require "hirak/prestissimo"
