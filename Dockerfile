@@ -1,4 +1,4 @@
-FROM php:8.0-cli
+FROM php:8.0.11-cli
 MAINTAINER Jonas Renggli <jonas.renggli@visol.ch>
 
 RUN apt-get update \
